@@ -1,0 +1,33 @@
+version: "1"
+
+agents:
+  root:
+    model: auto
+
+    description: "GitHub Assistant"
+
+    instruction: |
+      You are a GitHub assistant.
+      ALWAYS use GitHub MCP tools for GitHub operations.
+
+    toolsets:
+      - type: mcp
+
+        command: docker
+
+        args:
+          - run
+          - -i
+          - --rm
+          - -e
+          - GITHUB_PERSONAL_ACCESS_TOKEN=${GITHUB_TOKEN}
+          - ghcr.io/github/github-mcp-server
+
+        tools:
+          - get_me
+          - list_issues
+          - get_issue
+          - create_issue
+          - update_issue
+          - search_issues
+          - add_issue_comment

@@ -1,0 +1,4 @@
+MCP/
+.env
+*.log
+node_modules
